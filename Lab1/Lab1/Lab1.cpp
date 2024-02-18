@@ -42,10 +42,14 @@ bool checkSample(std::vector<double> vec)
 
 int main()
 {
+	int n = 40;
 	std::vector<double> sample;
 
 	for (int i = 0; i < 30; i++)
 		sample.push_back(getRandom());
+
+	for (int i = 0; i < 30; ++i)
+		std::cout << sample[i] << std::endl;
 
 	if (checkSample(sample))
 		std::cout << "Yes" << std::endl;
