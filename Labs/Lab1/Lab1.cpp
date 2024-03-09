@@ -1,27 +1,12 @@
 #include <iostream>
-#include <random>
 #include <vector>
-
-double getRandom()
-{
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_real_distribution<> dist(0, 1);
-
-	auto ret = dist(gen);
-	while (ret == 0.0f || ret == 1.0f)
-	{
-		ret = dist(gen);
-	}
-
-	return ret;
-}
+#include "Library.h"
 
 bool checkSample(std::vector<double> vec)
 {
 	int N = vec.size();
 	int k = 16;
-	std::vector<int> Ni(k);
+	std::vector<int> Ni(k, 0);
 
 	for (int i = 0; i < vec.size(); ++i)
 		++Ni[k * vec[i]];
@@ -45,10 +30,10 @@ int main()
 	int n = 40;
 	std::vector<double> sample;
 
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < n; i++)
 		sample.push_back(getRandom());
 
-	for (int i = 0; i < 30; ++i)
+	for (int i = 0; i < sample.size(); ++i)
 		std::cout << sample[i] << std::endl;
 
 	if (checkSample(sample))
