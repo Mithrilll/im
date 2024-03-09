@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+
 #include "Library.h"
 
 bool checkSample(std::vector<double> vec)
