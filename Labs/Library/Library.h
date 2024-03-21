@@ -2,6 +2,9 @@
 
 #include <random>
 #include <vector>
+#include <functional>
+
+#define PI 3.14159265359
 
 double getRandom()
 {
@@ -33,4 +36,18 @@ int getDiscrete(std::vector<double> distribution)
 	}
 
 	return -1;
+}
+
+double getContinuous(double (func)(double), double a, double b)
+{
+	double r = getRandom();
+
+	double x = func(r);
+	while (x < a || x > b)
+	{
+		r = getRandom();
+		x = func(r);
+	}
+
+	return x;
 }
