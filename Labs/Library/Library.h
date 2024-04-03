@@ -51,3 +51,21 @@ double getContinuous(double (func)(double), double a, double b)
 
 	return x;
 }
+
+// a - мат ожидание
+// b - среднеквадратическое отклонение
+double getNormal(double a, double b)
+{
+	int N = 12;
+
+	double std = - N * 1. / 2;
+
+	for (int i = 0; i < N; ++i)
+		std += getRandom();
+
+	std *= sqrt(12 / N);
+
+	std -= 41.0 / (13440.0 * N * N) * (std * std * std * std * std - 10 * std * std * std + 15 * std);
+
+	return a + b * std;
+}
